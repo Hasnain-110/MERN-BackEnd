@@ -6,7 +6,7 @@ const { collection } = require('../Model/teacherModel');
 const TeacherModel=require('../Model/teacherModel')
 
 
-var fname='';
+
 
 router.get('/',(req,res)=>{
     res.send("You Got the response from teacher router...");
@@ -19,6 +19,7 @@ router.post('/pass',(req,res)=>{
     
 
 });
+var fname='';
 var storage = multer.diskStorage({
  
    destination: function(req, file, cb) {

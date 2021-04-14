@@ -3,7 +3,7 @@ const router=express.Router();
 
 
 
-router.post('/add',(req,res)=>{
+router.post('/insert',(req,res)=>{
     const data=req.body;
     console.log("data");
 
@@ -11,4 +11,7 @@ router.post('/add',(req,res)=>{
 
 router.post('/login',(req, res)=>{
 
+
 });
+
+module.exports=router;

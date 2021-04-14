@@ -4,9 +4,11 @@ const multer=require('multer');
 //var anyBody = require("body/any")
 const app=express();
 const mongoose = require('mongoose');
-require('dotenv').config()
-const env=require('env');
-// const bodyParser = require('body-parser')
+require('dotenv').config();
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+
 // app.use(bodyParser.urlencoded({
 //   extended: true
 // }));
@@ -21,8 +23,9 @@ app.use(express.urlencoded({extended: true}));
 //app.use(morgan('dev'));
 
 const StudentRouter=require('./StudentRouter/Srouter');
-const AdminRouter=require('./AdminRouter/demoMail')
+//const AdminRouter=require('./AdminRouter/demoMail');
 const TeacherRouter=require('./TeacherRouter/Trouter')
+const AdminRouter=require('./AdminRouter/adminRouter')
 
 //from env file-enviroment variables
 const url=process.env.DB_URL;
@@ -46,8 +49,8 @@ app.use(function(req, res, next) {
 
 //router
 app.use('/Student',StudentRouter); 
-app.use('/Admin',AdminRouter); 
 app.use('/Teacher',TeacherRouter);
+app.use('/Admin',AdminRouter); 
 
 
 
